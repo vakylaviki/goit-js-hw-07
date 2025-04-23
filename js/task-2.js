@@ -24,8 +24,10 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
+
+
 const galleryEl = document.querySelector('.gallery');
-const fragment = document.createDocumentFragment(); // Щоб додати всі <li> за одну операцію
+const fragment = document.createDocumentFragment();
 
 for (let i = 0; i < images.length; i++) {
   const item = images[i];
