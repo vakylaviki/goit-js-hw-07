@@ -24,12 +24,22 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
-const galleryList = document.querySelector(".gallery");
+const galleryEl = document.querySelector('.gallery');
+const fragment = document.createDocumentFragment(); // Щоб додати всі <li> за одну операцію
 
-const markup = images
-  .map(({ url, alt }) =>
-    `<li class="gallery-item"><img src="${url}" alt="${alt}" class="gallery-img"></li>`
-  )
-  .join("");
+for (let i = 0; i < images.length; i++) {
+  const item = images[i];
 
-galleryList.insertAdjacentHTML("beforeend", markup);
+  const li = document.createElement('li');
+  li.classList.add('gallery-item');
+
+  const img = document.createElement('img');
+  img.classList.add('gallery-image');
+  img.src = item.url;
+  img.alt = item.alt;
+
+  li.append(img);
+  fragment.append(li);
+}
+
+galleryEl.append(fragment);
